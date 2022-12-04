@@ -21,8 +21,10 @@ When('selecionar o produto desejado na listagem', () => {
 })
 
 Then('inserir o produto ao carrinho e validar a mensagem', () => {
+    cy.get('#productTitle').should('be.visible')
     cy.get('#add-to-cart-button').click()
-    cy.xpath('//*[@id="sw-atc-details-single-container"]/div[2]').should('be.visible')
+    cy.xpath('//*[@id="sw-atc-details-single-container"]/div[2]')
+        .should('be.visible')
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => {
